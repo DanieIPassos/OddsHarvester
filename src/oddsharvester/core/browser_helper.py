@@ -59,6 +59,46 @@ class BrowserHelper:
             self.logger.error(f"Error while dismissing cookie banner: {e}")
             return False
 
+    async def dismiss_bookie_modal(self, page: Page):
+        """
+        Remove the bookmaker promotion modal overlay that blocks interactions.
+
+        This modal appears on match pages and intercepts all pointer events.
+        We remove it using JavaScript since it can't be dismissed by clicking.
+
+        Args:
+            page (Page): The Playwright page instance.
+
+        Returns:
+            bool: True if modal was removed, False otherwise.
+        """
+        try:
+            removed = await page.evaluate("""
+                () => {
+                    let removed = false;
+                    // Remove overlay-bookie-modal elements
+                    document.querySelectorAll('.overlay-bookie-modal, [class*="overlay-bookie"]').forEach(el => {
+                        el.remove();
+                        removed = true;
+                    });
+                    // Remove any fixed overlay that might be blocking
+                    document.querySelectorAll('div[class*="overlay"]').forEach(el => {
+                        const style = window.getComputedStyle(el);
+                        if (style.position === 'fixed' && style.zIndex > 100) {
+                            el.remove();
+                            removed = true;
+                        }
+                    });
+                    return removed;
+                }
+            """)
+            if removed:
+                self.logger.info("Removed bookie modal overlay")
+            return removed
+        except Exception as e:
+            self.logger.debug(f"Error removing bookie modal: {e}")
+            return False
+
     # =============================================================================
     # BOOKMAKER FILTER MANAGEMENT
     # =============================================================================
@@ -317,6 +357,9 @@ class BrowserHelper:
         """
         self.logger.info(f"Attempting to navigate to market tab: {market_tab_name}")
 
+        # Remove any blocking bookie modal overlay first
+        await self.dismiss_bookie_modal(page)
+
         # First attempt: Try to find the market directly in visible tabs
         market_found = False
         for selector in OddsPortalSelectors.MARKET_TAB_SELECTORS:
@@ -501,6 +544,9 @@ class BrowserHelper:
             bool: True if the element is clicked successfully, False otherwise.
         """
         try:
+            # Remove any blocking modal overlay first
+            await self.dismiss_bookie_modal(page)
+
             await page.wait_for_selector(selector=selector, timeout=timeout)
 
             if text:
@@ -535,12 +581,17 @@ class BrowserHelper:
             Exception: Logs the error and returns False if an issue occurs during execution.
         """
         try:
+            # Remove any blocking modal overlay first
+            await self.dismiss_bookie_modal(page)
+
             elements = await page.query_selector_all(selector)
 
             for element in elements:
                 element_text = await element.text_content()
 
                 if element_text and text in element_text:
+                    # Remove modal again right before clicking
+                    await self.dismiss_bookie_modal(page)
                     await element.click()
                     return True
 

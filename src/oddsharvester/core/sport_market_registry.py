@@ -18,6 +18,7 @@ from oddsharvester.utils.sport_market_constants import (
     TennisCorrectScoreMarket,
     TennisOverUnderGamesMarket,
     TennisOverUnderSetsMarket,
+    EsportsMarket,
 )
 
 
@@ -417,6 +418,16 @@ class SportMarketRegistrar:
             )
 
     @classmethod
+    def register_esports_markets(cls):
+        """Registers all esports betting markets (Dota 2, CS2, LoL, etc.)."""
+        SportMarketRegistry.register(
+            Sport.ESPORTS,
+            {
+                "home_away": cls.create_market_lambda("Home/Away", odds_labels=["1", "2"]),
+            },
+        )
+
+    @classmethod
     def register_all_markets(cls):
         """Registers all sports markets."""
         cls.register_football_markets()
@@ -427,3 +438,4 @@ class SportMarketRegistrar:
         cls.register_ice_hockey_markets()
         cls.register_baseball_markets()
         cls.register_american_football_markets()
+        cls.register_esports_markets()

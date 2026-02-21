@@ -316,4 +316,26 @@ SPORTS_LEAGUES_URLS_MAPPING = {
         "nfl": "https://www.oddsportal.com/american-football/usa/nfl/",
         "ncaa": "https://www.oddsportal.com/american-football/usa/ncaa/",
     },
+    Sport.ESPORTS: {
+        # Dota 2 Tournaments - note: season is appended as suffix (e.g., -2024)
+        "dota-2-the-international": "https://www.oddsportal.com/esports/dota-2/dota-2-the-international",
+        "dota-2-dreamleague": "https://www.oddsportal.com/esports/dota-2/dota-2-dreamleague",
+        "dota-2-elite-league": "https://www.oddsportal.com/esports/dota-2/dota-2-elite-league",
+        "dota-2-esl-one": "https://www.oddsportal.com/esports/dota-2/dota-2-esl-one",
+        "dota-2-riyadh-masters": "https://www.oddsportal.com/esports/dota-2/dota-2-riyadh-masters",
+        "dota-2-bts-pro-series": "https://www.oddsportal.com/esports/dota-2/dota-2-bts-pro-series",
+        "dota-2-pgl-wallachia": "https://www.oddsportal.com/esports/dota-2/dota-2-pgl-wallachia",
+        "dota-2-the-final-match": "https://www.oddsportal.com/esports/dota-2/dota-2-the-final-match",
+        "dota-2-epl": "https://www.oddsportal.com/esports/dota-2/dota-2-epl",
+        # CS2 Tournaments
+        "cs2-iem-katowice": "https://www.oddsportal.com/esports/counter-strike/cs2-iem-katowice",
+        "cs2-esl-pro-league": "https://www.oddsportal.com/esports/counter-strike/cs2-esl-pro-league",
+        "cs2-blast-premier": "https://www.oddsportal.com/esports/counter-strike/cs2-blast-premier",
+        "cs2-pgl-major": "https://www.oddsportal.com/esports/counter-strike/cs2-pgl-major",
+        # League of Legends
+        "lol-worlds": "https://www.oddsportal.com/esports/league-of-legends/lol-world-championship",
+        "lol-lck": "https://www.oddsportal.com/esports/league-of-legends/lol-lck",
+        "lol-lec": "https://www.oddsportal.com/esports/league-of-legends/lol-lec",
+        "lol-lcs": "https://www.oddsportal.com/esports/league-of-legends/lol-lcs",
+    },
 }

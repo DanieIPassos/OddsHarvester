@@ -12,6 +12,7 @@ class Sport(Enum):
     ICE_HOCKEY = "ice-hockey"
     BASEBALL = "baseball"
     AMERICAN_FOOTBALL = "american-football"
+    ESPORTS = "esports"
 
 
 class FootballMarket(Enum):
@@ -834,3 +835,9 @@ class AmericanFootballAsianHandicapMarket(Enum):
     HANDICAP_PLUS_20_5 = "asian_handicap_+20_5"
     HANDICAP_PLUS_21_0 = "asian_handicap_+21_0"
     HANDICAP_PLUS_21_5 = "asian_handicap_+21_5"
+
+
+class EsportsMarket(Enum):
+    """Esports-specific markets (Dota 2, CS2, LoL, etc.)."""
+
+    HOME_AWAY = "home_away"  # Match winner (Team 1 vs Team 2)

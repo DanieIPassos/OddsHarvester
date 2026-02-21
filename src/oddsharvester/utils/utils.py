@@ -14,6 +14,7 @@ from oddsharvester.utils.sport_market_constants import (
     BasketballAsianHandicapMarket,
     BasketballMarket,
     BasketballOverUnderMarket,
+    EsportsMarket,
     FootballAsianHandicapMarket,
     FootballEuropeanHandicapMarket,
     FootballMarket,
@@ -60,6 +61,7 @@ SPORT_MARKETS_MAPPING: dict[Sport, list[type[Enum]]] = {
         AmericanFootballOverUnderMarket,
         AmericanFootballAsianHandicapMarket,
     ],
+    Sport.ESPORTS: [EsportsMarket],
 }
 
 

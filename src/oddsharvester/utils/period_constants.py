@@ -244,3 +244,25 @@ class BaseballPeriod(Enum):
             cls.FIRST_HALF: "FirstHalf",
         }
         return internal_values[period]
+
+
+class EsportsPeriod(Enum):
+    """Periods available for esports matches (Dota 2, CS2, LoL, etc.)."""
+
+    FULL_TIME = "full_time"
+
+    @classmethod
+    def get_display_label(cls, period: "EsportsPeriod") -> str:
+        """Get the display label for OddsPortal UI."""
+        labels = {
+            cls.FULL_TIME: "Full Time",
+        }
+        return labels[period]
+
+    @classmethod
+    def get_internal_value(cls, period: "EsportsPeriod") -> str:
+        """Get the internal value used in scraper functions."""
+        internal_values = {
+            cls.FULL_TIME: "FullTime",
+        }
+        return internal_values[period]
