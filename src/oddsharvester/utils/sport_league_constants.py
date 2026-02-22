@@ -317,16 +317,15 @@ SPORTS_LEAGUES_URLS_MAPPING = {
         "ncaa": "https://www.oddsportal.com/american-football/usa/ncaa/",
     },
     Sport.ESPORTS: {
-        # Dota 2 Tournaments - note: season is appended as suffix (e.g., -2024)
+        # Dota 2 Tier 1 Tournaments (from urls.md)
+        "dota-2-dreamleague-season-28": "https://www.oddsportal.com/esports/dota-2/dota-2-dreamleague-season-28",
+        "dota-2-dreamleague-season-27": "https://www.oddsportal.com/esports/dota-2/dota-2-dreamleague-season-27",
+        "dota-2-pgl-wallachia-season-6": "https://www.oddsportal.com/esports/dota-2/dota-2-pgl-wallachia-season-6",
         "dota-2-the-international": "https://www.oddsportal.com/esports/dota-2/dota-2-the-international",
-        "dota-2-dreamleague": "https://www.oddsportal.com/esports/dota-2/dota-2-dreamleague",
-        "dota-2-elite-league": "https://www.oddsportal.com/esports/dota-2/dota-2-elite-league",
-        "dota-2-esl-one": "https://www.oddsportal.com/esports/dota-2/dota-2-esl-one",
-        "dota-2-riyadh-masters": "https://www.oddsportal.com/esports/dota-2/dota-2-riyadh-masters",
-        "dota-2-bts-pro-series": "https://www.oddsportal.com/esports/dota-2/dota-2-bts-pro-series",
-        "dota-2-pgl-wallachia": "https://www.oddsportal.com/esports/dota-2/dota-2-pgl-wallachia",
-        "dota-2-the-final-match": "https://www.oddsportal.com/esports/dota-2/dota-2-the-final-match",
-        "dota-2-epl": "https://www.oddsportal.com/esports/dota-2/dota-2-epl",
+        "dota-2-fissure-universe-episode-6": "https://www.oddsportal.com/esports/dota-2/dota-2-fissure-universe-episode-6",
+        "dota-2-clavision-snow-ruyi-2025": "https://www.oddsportal.com/esports/dota-2/dota-2-clavision-snow-ruyi-2025",
+        "dota-2-world-cup": "https://www.oddsportal.com/esports/dota-2/dota-2-world-cup",
+        "dota-2-fissure-universe-episode-5": "https://www.oddsportal.com/esports/dota-2/dota-2-fissure-universe-episode-5",
         # CS2 Tournaments
         "cs2-iem-katowice": "https://www.oddsportal.com/esports/counter-strike/cs2-iem-katowice",
         "cs2-esl-pro-league": "https://www.oddsportal.com/esports/counter-strike/cs2-esl-pro-league",

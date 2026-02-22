@@ -107,14 +107,31 @@ class BaseScraper:
             event_rows = soup.find_all(class_=re.compile("^eventRow"))
             self.logger.info(f"Found {len(event_rows)} event rows.")
 
-            match_links = {
-                f"{ODDSPORTAL_BASE_URL}{link['href']}"
-                for row in event_rows
-                for link in row.find_all("a", href=True)
-                if len(link["href"].strip("/").split("/")) > 3
-            }
+            # Get current page URL to filter links by sport
+            current_url = page.url
+            
+            # Determine sport prefix from URL to filter matching links
+            sport_filters = [
+                "/esports/", "/football/", "/tennis/", "/basketball/",
+                "/hockey/", "/baseball/", "/american-football/",
+                "/rugby-league/", "/rugby-union/"
+            ]
+            active_filter = None
+            for sf in sport_filters:
+                if sf in current_url:
+                    active_filter = sf
+                    break
+            
+            match_links = set()
+            for row in event_rows:
+                for link in row.find_all("a", href=True):
+                    href = link["href"]
+                    # Must have >3 path parts AND match the current sport
+                    if len(href.strip("/").split("/")) > 3:
+                        if active_filter is None or active_filter in href:
+                            match_links.add(f"{ODDSPORTAL_BASE_URL}{href}")
 
-            self.logger.info(f"Extracted {len(match_links)} unique match links.")
+            self.logger.info(f"Extracted {len(match_links)} unique match links (filtered by sport).")
             return list(match_links)
 
         except Exception as e:

@@ -41,6 +41,10 @@ class URLBuilder:
         if not season:
             return f"{base_url}/results/"
 
+        # For esports, the URL already contains the tournament/season info, don't append
+        if sport.lower() == "esports":
+            return f"{base_url}/results/"
+
         if isinstance(season, str) and season.lower() == "current":
             raise ValueError(f"Invalid season format: {season}. Expected format: 'YYYY' or 'YYYY-YYYY'")
 
